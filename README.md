@@ -1,6 +1,6 @@
 # EUROPA - Creative Production House
 
-> **Live Demo:** [Click here to view the website]()
+> **Live Demo:** [Click here to view the website](https://techsynth.github.io/Europa/)
 
 A minimalist web platform designed for a creative production company with offices in Madrid, Barcelona, and Berlin.
 
@@ -19,4 +19,8 @@ This project focuses on building a high-end visual experience for showcasing aud
 
 ## Design Process
 I have included Figma screenshots in the repository to demonstrate the intended final look and the UI/UX planning behind the development.
+
+<img width="3840" height="4758" alt="image" src="https://github.com/user-attachments/assets/c1db4f3d-989e-40e6-8e7b-8cb014f6e37f" />
+
+<img width="3840" height="2884" alt="image" src="https://github.com/user-attachments/assets/5fa66226-896e-45b7-8bd7-ef067723ddad" />
 
