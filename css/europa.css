@@ -36,9 +36,10 @@ body {
   font-weight: bold;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  font-size: 17px;
   transition: opacity 0.3s ease;
 }
-.navbar .links a:hover {
+.navbar .links a:hover, .navbar .links a.active {
   opacity: 0.7;
   color: red;
 }
@@ -55,7 +56,56 @@ body {
 .navbar .logo:hover {
   opacity: 0.7;
 }
+.navbar .hamburger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    padding: 0 15px;
+    border-right: none;
+    border-bottom: 1px solid #dedede;
+  }
+  .navbar .links {
+    display: none;
+  }
+  .navbar .logo {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 18px;
+  }
+  .navbar .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1100;
+  }
+  .navbar .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #000000;
+    transition: all 0.3s ease;
+  }
+}
 
+@media (max-width: 768px) {
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -107,6 +157,14 @@ body {
   font-weight: 100;
   text-shadow: #000000 0.5px 0 50px;
 }
+@media (max-width: 768px) {
+  .menu-overlay {
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
+}
 
 .cuerpo {
   margin-left: 45px;
@@ -116,10 +174,12 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 .cuerpo-content {
   text-align: center;
   width: 100%;
+  height: 100%;
   position: relative;
 }
 .cuerpo .carousel {
@@ -133,12 +193,17 @@ body {
 }
 .cuerpo .carousel-inner {
   display: flex;
-  transition: transform 0.6s ease-in-out;
   width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out, opacity 0.4s ease;
 }
 .cuerpo .carousel-item {
   min-width: 100%;
+  height: 100%;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cuerpo .carousel-item a {
   text-decoration: none;
@@ -150,7 +215,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 50px;
+  padding: 0 30px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -158,9 +223,9 @@ body {
 .cuerpo .carousel-controls button {
   pointer-events: all;
   background: none;
-  border: 0px solid #ffffff;
+  border: none;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 36px;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -169,11 +234,48 @@ body {
 .cuerpo .carousel-controls button:hover {
   color: #dedede;
 }
-.cuerpo h2, .cuerpo h4 {
+.cuerpo .carousel-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.cuerpo .carousel-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  padding: 0;
+}
+.cuerpo .carousel-dots .dot.active {
+  background-color: #ffffff;
+}
+.cuerpo .scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  animation: bounce 2s infinite;
+}
+.cuerpo .scroll-hint:hover {
+  color: #ffffff;
+}
+.cuerpo h2,
+.cuerpo h3 {
   color: transparent;
   -webkit-text-stroke: 1px #ffffff;
   line-height: 0.8;
-  letter-spacing: -0.4vi;
+  letter-spacing: -0.02em;
   transition: color 0.3s ease;
   cursor: default;
   width: -moz-fit-content;
@@ -181,17 +283,33 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.cuerpo h2:hover, .cuerpo h4:hover {
+.cuerpo h2:hover,
+.cuerpo h3:hover {
   color: #ffffff;
 }
 .cuerpo h2 {
-  font-size: 12vi;
+  font-size: clamp(2rem, 10vw, 6rem);
 }
-.cuerpo h4 {
-  font-size: 6.8vi;
+.cuerpo h3 {
+  font-size: clamp(1rem, 5vw, 3rem);
   margin-top: 1vh;
 }
+@media (max-width: 768px) {
+  .cuerpo {
+    margin-left: 0;
+    margin-top: 50px;
+    height: calc(100vh - 50px);
+  }
+}
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
 .cuerpoInfo {
   margin-left: 45px;
   min-height: 100vh;
@@ -200,12 +318,20 @@ body {
   justify-items: center;
   padding: 40px;
 }
+@media (max-width: 768px) {
+  .cuerpoInfo {
+    margin-left: 0;
+    margin-top: 50px;
+    padding: 15px;
+  }
+}
 
 .tabla-info {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
   max-width: 1200px;
+  width: 100%;
 }
 .tabla-info tr {
   display: grid;
@@ -216,6 +342,12 @@ body {
 }
 .tabla-info tr:last-child {
   border-bottom: none;
+}
+@media (max-width: 768px) {
+  .tabla-info tr {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
 .tabla-info td {
   display: flex;
@@ -246,6 +378,145 @@ body {
   margin-bottom: 0;
 }
 
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+.cuerpoWork {
+  margin-left: 45px;
+  min-height: 100vh;
+  background-color: #0C0C0C;
+  padding: 60px 50px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media (max-width: 768px) {
+  .cuerpoWork {
+    margin-left: 0;
+    margin-top: 50px;
+    padding: 20px 15px 60px;
+  }
+}
+
+.work-hero {
+  width: 100%;
+}
+.work-hero .work-hero-link {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+.work-hero .work-hero-link:hover .work-hero-thumb img {
+  opacity: 0.85;
+}
+.work-hero .work-hero-thumb {
+  width: 100%;
+  aspect-ratio: 16/7;
+  overflow: hidden;
+  border-radius: 50px;
+  background-color: #1a1a1a;
+  will-change: opacity, scale;
+  view-timeline-name: --reveal;
+  animation-name: show;
+  animation-fill-mode: both;
+  animation-timeline: --reveal;
+  animation-range: entry 10% cover 45%;
+}
+.work-hero .work-hero-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+@media (max-width: 768px) {
+  .work-hero .work-hero-thumb {
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+  }
+}
+
+.work-grid {
+  display: grid;
+  gap: 20px;
+}
+.work-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 768px) {
+  .work-grid--2 {
+    grid-template-columns: 1fr;
+  }
+}
+.work-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 768px) {
+  .work-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.work-item a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+.work-item a:hover .work-thumb img {
+  opacity: 0.8;
+}
+.work-item .work-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: #1a1a1a;
+  will-change: opacity, scale;
+  view-timeline-name: --reveal;
+  animation-name: show;
+  animation-fill-mode: both;
+  animation-timeline: --reveal;
+  animation-range: entry 10% cover 45%;
+}
+.work-item .work-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+@media (max-width: 768px) {
+  .work-item .work-thumb {
+    border-radius: 12px;
+  }
+}
+
+.work-caption {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+.work-caption span:first-child {
+  font-weight: 500;
+  color: #ffffff;
+}
+.work-caption span:last-child {
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
+}
+
 .main-footer {
   background-color: #000000;
   color: #ffffff;
@@ -253,8 +524,15 @@ body {
   padding: 40px 70px;
   font-size: 14px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
+}
+@media (max-width: 768px) {
+  .main-footer {
+    margin-left: 0;
+    padding: 30px 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .main-footer .footer-col {
   display: flex;

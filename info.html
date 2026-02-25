@@ -15,148 +15,80 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="menuPrincipal">
         <div class="links">
-            <a href="#director">Director</a>
-            <a href="#photographers">Photographers</a>
-            <a href="#work">Work</a>
+            <a href="#director" aria-haspopup="true">Director</a>
+            <a href="#photographers" aria-haspopup="true">Photographers</a>
+            <a href="#work" aria-haspopup="true">Work</a>
             <a href="info.html">Info</a>
         </div>
-        <a href="index.html" class="logo">EUROPA</a>
+        <a href="index.html" class="logo" aria-label="logoInicio">EUROPA</a>
+        <button class="hamburger" aria-label="abrirMenu" aria-expanded="false" aria-controls="menu-overlay">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
-    <aside id="menu-overlay" class="menu-overlay">
-        <button id="close-menu" class="close-btn">&times;</button>
-
+    <aside id="menu-overlay" class="menu-overlay" aria-label="menuNavegacion">
+        <button id="close-menu" class="close-btn" aria-label="cerrarMenu">&times;</button>
         <div class="menu-content">
-
             <ul id="list-director" class="menu-list" style="display: none;">
                 <li><a href="#">ALMA</a></li>
                 <li><a href="#">Billy Foreman</a></li>
                 <li><a href="#">Jimenez Diaz</a></li>
             </ul>
-
             <ul id="list-photographers" class="menu-list" style="display: none;">
                 <li><a href="#">Coco Capitan</a></li>
                 <li><a href="#">Hugo Comte</a></li>
                 <li><a href="#">Jack Davison</a></li>
                 <li><a href="#">Renell Medrano</a></li>
             </ul>
-
             <ul id="list-work" class="menu-list" style="display: none;">
                 <li><a href="#">Fashion</a></li>
-                <li><a href="#">Music Video</a></li>
+                <li><a href="musicVideo.html">Music Video</a></li>
                 <li><a href="#">Commercial</a></li>
                 <li><a href="#">Documentary</a></li>
             </ul>
-
         </div>
     </aside>
 
-    <main class="cuerpoInfo">
-        <table class="tabla-info">
+    <main class="cuerpoInfo" aria-label="contenidoInfo">
+        <table class="tabla-info" role="presentation">
             <tr>
                 <td>
                     <h3>Barcelona</h3>
-                    <p>
-                        Rambla Catalunya, 123<br>
-                        08008 Barcelona, Spain<br>
-                        +34 934 920 000<br>
-                        <a href="mailto:bcn@europa.com">bcn@europa.com</a>
-                    </p>
+                    <p>Rambla Catalunya, 123<br>08008 Barcelona, Spain<br>+34 934 920 000<br>
+                    <a href="mailto:bcn@europa.com">bcn@europa.com</a></p>
                 </td>
                 <td>
-                    <div>
-                        <p>
-                            Clara Vilaseca<br>
-                            Productora Ejecutiva<br>
-                            <a href="mailto:clara.vilaseca@europa.com">clara.vilaseca@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Oriol Pujol<br>
-                            Director de Arte Digital<br>
-                            <a href="mailto:oriol.pujol@europa.com">oriol.pujol@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Pau Riera<br>
-                            Desarrollador Senior<br>
-                            <a href="mailto:pau.riera@europa.com">pau.riera@europa.com</a>
-                        </p>
-                    </div>
+                    <div><p>Clara Vilaseca<br>Productora Ejecutiva<br><a href="mailto:clara.vilaseca@europa.com">clara.vilaseca@europa.com</a></p></div>
+                    <div><p>Oriol Pujol<br>Director de Arte Digital<br><a href="mailto:oriol.pujol@europa.com">oriol.pujol@europa.com</a></p></div>
+                    <div><p>Pau Riera<br>Desarrollador Senior<br><a href="mailto:pau.riera@europa.com">pau.riera@europa.com</a></p></div>
                 </td>
             </tr>
-
             <tr>
                 <td>
                     <h3>Madrid</h3>
-                    <p>
-                        Pº de la Castellana 130<br>
-                        28046 Madrid, Spain<br>
-                        +34 91 702 12 00<br>
-                        <a href="mailto:mad@europa.com">mad@europa.com</a>
-                    </p>
+                    <p>Pº de la Castellana 130<br>28046 Madrid, Spain<br>+34 91 702 12 00<br>
+                    <a href="mailto:mad@europa.com">mad@europa.com</a></p>
                 </td>
                 <td>
-                    <div>
-                        <p>
-                            Javier León<br>
-                            Head of Strategy & Innovation<br>
-                            <a href="mailto:javier.leon@europa.com">javier.leon@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Elena Soto<br>
-                            Manager de Cuentas Globales<br>
-                            <a href="mailto:elena.soto@europa.com">elena.soto@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Manuel Díaz<br>
-                            Desarrollador Junior<br>
-                            <a href="mailto:manuel.diaz@europa.com">manuel.diaz@europa.com</a>
-                        </p>
-                    </div>
+                    <div><p>Javier León<br>Head of Strategy & Innovation<br><a href="mailto:javier.leon@europa.com">javier.leon@europa.com</a></p></div>
+                    <div><p>Elena Soto<br>Manager de Cuentas Globales<br><a href="mailto:elena.soto@europa.com">elena.soto@europa.com</a></p></div>
+                    <div><p>Manuel Díaz<br>Desarrollador Junior<br><a href="mailto:manuel.diaz@europa.com">manuel.diaz@europa.com</a></p></div>
                 </td>
             </tr>
-
             <tr>
                 <td>
                     <h3>Berlin</h3>
-                    <p>
-                        Torstraße 138 10119 Berlin,<br>
-                        Germany<br>
-                        +49 30 206330<br>
-                        <a href="mailto:ber@europa.com">ber@europa.com</a>
-                    </p>
+                    <p>Torstraße 138 10119 Berlin,<br>Germany<br>+49 30 206330<br>
+                    <a href="mailto:ber@europa.com">ber@europa.com</a></p>
                 </td>
                 <td>
-                    <div>
-                        <p>
-                            Katharina Schmidt<br>
-                            Creative Director<br>
-                            <a href="mailto:katharina.schmidt@europa.com">katharina.schmidt@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Lukas Müller<br>
-                            Director de Fotografía<br>
-                            <a href="mailto:lukas.muller@europa.com">lukas.muller@europa.com</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Anna Weber<br>
-                            Desarrolladora Full Stack<br>
-                            <a href="mailto:anna.weber@europa.com">anna.weber@europa.com</a>
-                        </p>
-                    </div>
+                    <div><p>Katharina Schmidt<br>Creative Director<br><a href="mailto:katharina.schmidt@europa.com">katharina.schmidt@europa.com</a></p></div>
+                    <div><p>Lukas Müller<br>Director de Fotografía<br><a href="mailto:lukas.muller@europa.com">lukas.muller@europa.com</a></p></div>
+                    <div><p>Anna Weber<br>Desarrolladora Full Stack<br><a href="mailto:anna.weber@europa.com">anna.weber@europa.com</a></p></div>
                 </td>
             </tr>
         </table>
@@ -164,41 +96,37 @@
 
     <script src="js/app.js"></script>
 
-    <footer class="main-footer">
+    <footer class="main-footer" aria-label="pieDePagina">
         <div class="footer-col">
             <h3>Barcelona</h3>
             <p>Rambla Catalunya, 123<br>08008 Barcelona, Spain</p>
             <p>+34 934 920 000</p>
             <a href="mailto:bcn@europa.com">bcn@europa.com</a>
         </div>
-
         <div class="footer-col">
             <h3>Madrid</h3>
             <p>Pº de la Castellana 130<br>28046 Madrid, Spain</p>
             <p>+34 91 702 12 00</p>
             <a href="mailto:mad@europa.com">mad@europa.com</a>
         </div>
-
         <div class="footer-col">
             <h3>Berlin</h3>
             <p>Torstraße 138 10119 Berlin,<br>Germany</p>
             <p>+49 30 206330</p>
             <a href="mailto:ber@europa.com">ber@europa.com</a>
         </div>
-
         <div class="footer-col">
             <h3>Redes Sociales</h3>
             <a href="#instagram">Instagram</a>
             <a href="#x">X</a>
-            <a href="#tiktok">Tiktok</a>
+            <a href="#tiktok">TikTok</a>
             <a href="#linkedin">LinkedIn</a>
         </div>
-
         <div class="footer-col">
             <h3>Navegación</h3>
             <a href="info.html">Info</a>
             <a href="index.html#work">Work</a>
-            <a href="index.html#directors">Directors</a>
+            <a href="index.html#director">Directors</a>
             <a href="index.html#photographers">Photographers</a>
         </div>
     </footer>

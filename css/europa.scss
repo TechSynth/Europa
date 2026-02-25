@@ -13,6 +13,8 @@ $spacing-medium: 15px;
 $spacing-large: 30px;
 $spacing-xlarge: 40px;
 
+$breakpoint-mobile: 768px;
+
 // mixins
 @mixin flex-center {
     display: flex;
@@ -35,6 +37,12 @@ $spacing-xlarge: 40px;
     transition: $property $duration $timing;
 }
 
+@mixin mobile {
+    @media (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}
+
 // reset
 * {
     margin: 0;
@@ -48,7 +56,7 @@ body {
     background-color: $color-primary;
 }
 
-// navbar
+// navbar — desktop: barra lateral vertical
 .navbar {
     position: fixed;
     top: 0;
@@ -63,27 +71,29 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: $spacing-xlarge 0;
-    
+
     .links {
         display: flex;
         flex-direction: column;
         gap: $spacing-large;
-        
+
         a {
             text-decoration: none;
             color: $color-black;
             font-weight: bold;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
+            font-size: 17px;
             @include transition(opacity);
-            
-            &:hover {
+
+            &:hover,
+            &.active {
                 opacity: 0.7;
-                color: red
+                color: red;
             }
         }
     }
-    
+
     .logo {
         font-size: larger;
         font-style: italic;
@@ -93,27 +103,82 @@ body {
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         @include transition(opacity);
-        
+
         &:hover {
             opacity: 0.7;
         }
     }
+
+    .hamburger {
+        display: none;
+    }
+
+    @include mobile {
+        width: 100%;
+        height: 50px;
+        flex-direction: row;
+        padding: 0 $spacing-medium;
+        border-right: none;
+        border-bottom: 1px solid $color-border;
+
+        .links {
+            display: none;
+        }
+
+        .logo {
+            writing-mode: horizontal-tb;
+            transform: none;
+            font-size: 18px;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1100;
+
+            span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background-color: $color-black;
+                @include transition(all, 0.3s);
+            }
+        }
+    }
 }
 
-// side menu
+// Estado abierto del hamburger — fuera del nesting para que el selector funcione
+@media (max-width: $breakpoint-mobile) {
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+// side menu overlay
 .menu-overlay {
     position: fixed;
     top: 0;
-    left: $navbar-width; 
+    left: $navbar-width;
     width: 300px;
     height: 100vh;
     background-color: #ff2a50;
     z-index: 900;
-    transform: translateX(-100%); 
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), 
-    background-color 0.3s;
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+        background-color 0.3s;
     padding: 40px;
-    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
 
     &.open {
         transform: translateX(0);
@@ -129,7 +194,7 @@ body {
         font-size: 24px;
         cursor: pointer;
         padding: 5px;
-        
+
         &:hover {
             opacity: 0.7;
         }
@@ -137,45 +202,54 @@ body {
 
     .menu-content {
         margin-top: 60px;
-        
+
         ul {
             list-style: none;
-            
+
             li {
                 margin-bottom: 15px;
-                
+
                 a {
                     margin-bottom: 15px;
                     text-decoration: none;
                     color: $color-black;
                     font-size: 3vh;
                     transition: opacity 1s ease-in;
-                    
+
                     &:hover {
                         color: $color-white;
-                        font-weight:100;
+                        font-weight: 100;
                         text-shadow: $color-black 0.5px 0 50px;
                     }
                 }
             }
         }
     }
+
+    @include mobile {
+        left: 0;
+        top: 50px;
+        width: 100%;
+        height: calc(100vh - 50px);
+    }
 }
 
-// main content
+// main content — carrusel pantalla completa
 .cuerpo {
     margin-left: $navbar-width;
     height: 100vh;
     background-color: $color-primary;
     @include flex-center;
     overflow: hidden;
-    
+    position: relative;
+
     &-content {
         text-align: center;
         width: 100%;
+        height: 100%;
         position: relative;
     }
-    
+
     .carousel {
         position: relative;
         width: 100%;
@@ -185,74 +259,132 @@ body {
         justify-content: center;
         overflow: hidden;
     }
-    
+
     .carousel-inner {
         display: flex;
-        transition: transform 0.6s ease-in-out;
         width: 100%;
+        height: 100%;
+        transition: transform 0.6s ease-in-out, opacity 0.4s ease;
     }
-    
+
     .carousel-item {
         min-width: 100%;
+        height: 100%;
         flex-shrink: 0;
+        @include flex-center;
 
-        a{
+        a {
             text-decoration: none;
             display: block;
             color: inherit;
         }
     }
-    
+
     .carousel-controls {
         position: absolute;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 0 50px;
+        padding: 0 30px;
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
-        
+
         button {
             pointer-events: all;
             background: none;
-            border: 0px solid $color-white;
+            border: none;
             color: $color-white;
-            font-size: 24px;
+            font-size: 36px;
             width: 50px;
             height: 50px;
             cursor: pointer;
             @include transition(all);
-            
+
             &:hover {
                 color: $color-hover;
             }
         }
     }
-    
-    h2, h4 {
+
+    // indicadores de slide (dots) — visibilidad de estado (Nielsen)
+    .carousel-dots {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba($color-white, 0.35);
+            cursor: pointer;
+            @include transition(background-color);
+            border: none;
+            padding: 0;
+
+            &.active {
+                background-color: $color-white;
+            }
+        }
+    }
+
+    // scroll hint — indica que hay más contenido abajo
+    .scroll-hint {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        color: rgba($color-white, 0.45);
+        font-size: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        @include transition(color);
+        animation: bounce 2s infinite;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+
+    h2,
+    h3 {
         @include text-stroke(1px, $color-white);
         line-height: 0.8;
-        letter-spacing: -0.4vi;
+        letter-spacing: -0.02em;
         @include transition(color);
         cursor: default;
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        
+
         &:hover {
             color: $color-white;
         }
     }
-    
+
     h2 {
-        font-size: 12vi;
+        font-size: clamp(2rem, 10vw, 6rem);
     }
-    
-    h4 {
-        font-size: 6.8vi;
+
+    h3 {
+        font-size: clamp(1rem, 5vw, 3rem);
         margin-top: 1vh;
     }
+
+    @include mobile {
+        margin-left: 0;
+        margin-top: 50px;
+        height: calc(100vh - 50px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
 }
 
 // info page
@@ -261,6 +393,12 @@ body {
     min-height: 100vh;
     @include grid-center;
     padding: $spacing-xlarge;
+
+    @include mobile {
+        margin-left: 0;
+        margin-top: 50px;
+        padding: $spacing-medium;
+    }
 }
 
 .tabla-info {
@@ -268,52 +406,208 @@ body {
     grid-template-columns: 1fr;
     gap: $spacing-xlarge;
     max-width: 1200px;
-    
+    width: 100%;
+
     tr {
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: $spacing-xlarge;
         padding: $spacing-large 0;
         border-bottom: 1px solid rgba($color-black, 0.1);
-        
+
         &:last-child {
             border-bottom: none;
         }
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            gap: $spacing-medium;
+        }
     }
-    
+
     td {
         display: flex;
         flex-direction: column;
         gap: $spacing-medium;
-        
+
         h3 {
             margin-bottom: $spacing-small;
             font-size: 18px;
         }
-        
+
         p {
             line-height: 1.6;
             margin: 0;
         }
-        
+
         a {
             text-decoration: none;
             font-style: italic;
             color: $color-black;
             @include transition(opacity);
-            
+
             &:hover {
                 opacity: 0.7;
             }
         }
-        
+
         div {
             margin-bottom: $spacing-medium;
-            
+
             &:last-child {
                 margin-bottom: 0;
             }
         }
+    }
+}
+
+// scroll-driven reveal
+@keyframes show {
+    from {
+        opacity: 0;
+        scale: 0.9;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+// work / musicVideo page
+.cuerpoWork {
+    margin-left: $navbar-width;
+    min-height: 100vh;
+    background-color: $color-primary;
+    padding: 60px 50px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include mobile {
+        margin-left: 0;
+        margin-top: 50px;
+        padding: 20px $spacing-medium 60px;
+    }
+}
+
+.work-hero {
+    width: 100%;
+
+    .work-hero-link {
+        display: block;
+        text-decoration: none;
+        color: $color-white;
+
+        &:hover .work-hero-thumb img {
+            opacity: 0.85;
+        }
+    }
+
+    .work-hero-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        overflow: hidden;
+        border-radius: 50px;
+        background-color: #1a1a1a;
+        will-change: opacity, scale;
+
+        view-timeline-name: --reveal;
+        animation-name: show;
+        animation-fill-mode: both;
+        animation-timeline: --reveal;
+        animation-range: entry 10% cover 45%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            @include transition(opacity);
+        }
+
+        @include mobile {
+            border-radius: 16px;
+            aspect-ratio: 16 / 9;
+        }
+    }
+}
+
+.work-grid {
+    display: grid;
+    gap: 20px;
+
+    &--2 {
+        grid-template-columns: repeat(2, 1fr);
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &--3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.work-item {
+    a {
+        display: block;
+        text-decoration: none;
+        color: $color-white;
+
+        &:hover .work-thumb img {
+            opacity: 0.8;
+        }
+    }
+
+    .work-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        border-radius: 30px;
+        background-color: #1a1a1a;
+        will-change: opacity, scale;
+
+        view-timeline-name: --reveal;
+        animation-name: show;
+        animation-fill-mode: both;
+        animation-timeline: --reveal;
+        animation-range: entry 10% cover 45%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            @include transition(opacity);
+        }
+
+        @include mobile {
+            border-radius: 12px;
+        }
+    }
+}
+
+.work-caption {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 8px;
+    font-size: 12px;
+
+    span:first-child {
+        font-weight: 500;
+        color: $color-white;
+    }
+
+    span:last-child {
+        color: rgba($color-white, 0.55);
+        font-style: italic;
     }
 }
 
@@ -325,31 +619,37 @@ body {
     padding: $spacing-xlarge 70px;
     font-size: 14px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 20px;
-    
+
+    @include mobile {
+        margin-left: 0;
+        padding: $spacing-large $spacing-medium;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .footer-col {
         display: flex;
         flex-direction: column;
         gap: $spacing-small;
-        
+
         h3 {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
         }
-        
+
         p {
             line-height: 1.4;
             margin-bottom: 10px;
         }
-        
+
         a {
             color: $color-white;
             text-decoration: none;
             opacity: 0.8;
             @include transition(opacity);
-            
+
             &:hover {
                 opacity: 1;
             }
