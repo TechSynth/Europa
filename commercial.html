@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUROPA - Commercial</title>
+    <link rel="stylesheet" href="css/europa.css">
+    <style>
+        .talent-hero { padding: 100px 5%; background: #f4f4f4; color: #111; }
+        .talent-bio { max-width: 800px; font-size: 1.2rem; line-height: 1.6; margin-bottom: 50px; }
+        .talent-bio h1 { font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" aria-label="menuPrincipal">
+        <div class="links">
+            <a href="#director" aria-haspopup="true">Director</a>
+            <a href="#photographers" aria-haspopup="true">Photographers</a>
+            <a href="#work" aria-haspopup="true">Work</a>
+            <a href="info.html">Info</a>
+        </div>
+        <a href="index.html" class="logo" aria-label="logoInicio">EUROPA</a>
+        <button class="hamburger" aria-label="abrirMenu" aria-expanded="false" aria-controls="menu-overlay">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <aside id="menu-overlay" class="menu-overlay" aria-label="menuNavegacion">
+        <button id="close-menu" class="close-btn" aria-label="cerrarMenu">&times;</button>
+        <div class="menu-content">
+            <ul id="list-director" class="menu-list" style="display: none;">
+                <li><a href="alma.html">ALMA</a></li>
+                <li><a href="billy-foreman.html">Billy Foreman</a></li>
+                <li><a href="jimenez-diaz.html">Jimenez Diaz</a></li>
+            </ul>
+            <ul id="list-photographers" class="menu-list" style="display: none;">
+                <li><a href="coco-capitan.html">Coco Capitan</a></li>
+                <li><a href="hugo-comte.html">Hugo Comte</a></li>
+                <li><a href="jack-davison.html">Jack Davison</a></li>
+                <li><a href="renell-medrano.html">Renell Medrano</a></li>
+            </ul>
+            <ul id="list-work" class="menu-list" style="display: none;">
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="musicVideo.html">Music Video</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="documentary.html">Documentary</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="cuerpoWork">
+        
+        <div class="work-hero">
+            <div class="work-caption">
+                <h1>Commercial</h1>
+                <p>Most agencies over-polish commercial work until it looks like a stock photo. We try to leave the rough edges in. The recent Loewe spot Jimenez directed is a good example—she kept all the ambient noise from the street instead of replacing it with a clean studio mix.</p>
+            </div>
+        </div>
+        <div class="work-grid work-grid--2">
+            <div class="work-item">
+                <a href="#"><div class="work-thumb"><img src="img/adidas.jpg" alt="Adidas"></div>
+                <div class="work-caption"><span>Adidas – All In</span><span>Directed by Billy Foreman</span></div></a>
+            </div>
+            <div class="work-item">
+                <a href="#"><div class="work-thumb"><img src="img/zara.jpg" alt="Zara"></div>
+                <div class="work-caption"><span>ZARA ORIGINS</span><span>Directed by Bynt</span></div></a>
+            </div>
+        </div>
+    
+    <div class="work-grid work-grid--3">
+        <div class="work-item"><a href="#"><div class="work-thumb"><img src="img/nike.jpg" alt="Nike Play New"></div><div class="work-caption"><span>Nike – Play New</span><span>Directed by ALMA</span></div></a></div>
+        <div class="work-item"><a href="#"><div class="work-thumb"><img src="img/palace.jpg" alt="Palace"></div><div class="work-caption"><span>Palace Skateboards – Winter 23</span><span>Directed by Billy Foreman</span></div></a></div>
+        <div class="work-item"><a href="#"><div class="work-thumb"><img src="img/loewe.jpg" alt="Loewe"></div><div class="work-caption"><span>Loewe – Paula's Ibiza</span><span>Directed by Jimenez Diaz</span></div></a></div>
+    </div>
+    
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <footer class="main-footer" aria-label="pieDePagina">
+        <div class="footer-col">
+            <h3>Barcelona</h3><p>Rambla Catalunya, 123<br>08008 Barcelona, Spain</p><p>+34 934 920 000</p><a href="mailto:bcn@europa.com">bcn@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Madrid</h3><p>Pº de la Castellana 130<br>28046 Madrid, Spain</p><p>+34 91 702 12 00</p><a href="mailto:mad@europa.com">mad@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Berlin</h3><p>Torstraße 138 10119 Berlin,<br>Germany</p><p>+49 30 206330</p><a href="mailto:ber@europa.com">ber@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Redes Sociales</h3><a href="#instagram">Instagram</a><a href="#x">X</a><a href="#tiktok">TikTok</a><a href="#linkedin">LinkedIn</a>
+        </div>
+        <div class="footer-col">
+            <h3>Navegación</h3><a href="info.html">Info</a><a href="index.html#work">Work</a><a href="index.html#director">Directors</a><a href="index.html#photographers">Photographers</a>
+        </div>
+    </footer>
+</body>
+</html>

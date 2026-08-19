@@ -579,3 +579,17 @@ body {
 .main-footer .footer-col a:hover {
   opacity: 1;
 }/*# sourceMappingURL=europa.css.map */
+/* Fix text colors */
+.talent-bio, .talent-bio h1, .talent-bio p {
+    color: #ffffff !important;
+}
+.talent-hero {
+    background: transparent !important;
+}
+.work-hero h1, .work-hero p {
+    color: #ffffff !important;
+}
+
+.cuerpoWork {
+    flex-direction: column;
+}

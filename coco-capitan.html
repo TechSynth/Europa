@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUROPA - Coco Capitan</title>
+    <link rel="stylesheet" href="css/europa.css">
+    <style>
+        .talent-hero { padding: 100px 5%; background: #f4f4f4; color: #111; }
+        .talent-bio { max-width: 800px; font-size: 1.2rem; line-height: 1.6; margin-bottom: 50px; }
+        .talent-bio h1 { font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" aria-label="menuPrincipal">
+        <div class="links">
+            <a href="#director" aria-haspopup="true">Director</a>
+            <a href="#photographers" aria-haspopup="true">Photographers</a>
+            <a href="#work" aria-haspopup="true">Work</a>
+            <a href="info.html">Info</a>
+        </div>
+        <a href="index.html" class="logo" aria-label="logoInicio">EUROPA</a>
+        <button class="hamburger" aria-label="abrirMenu" aria-expanded="false" aria-controls="menu-overlay">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <aside id="menu-overlay" class="menu-overlay" aria-label="menuNavegacion">
+        <button id="close-menu" class="close-btn" aria-label="cerrarMenu">&times;</button>
+        <div class="menu-content">
+            <ul id="list-director" class="menu-list" style="display: none;">
+                <li><a href="alma.html">ALMA</a></li>
+                <li><a href="billy-foreman.html">Billy Foreman</a></li>
+                <li><a href="jimenez-diaz.html">Jimenez Diaz</a></li>
+            </ul>
+            <ul id="list-photographers" class="menu-list" style="display: none;">
+                <li><a href="coco-capitan.html">Coco Capitan</a></li>
+                <li><a href="hugo-comte.html">Hugo Comte</a></li>
+                <li><a href="jack-davison.html">Jack Davison</a></li>
+                <li><a href="renell-medrano.html">Renell Medrano</a></li>
+            </ul>
+            <ul id="list-work" class="menu-list" style="display: none;">
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="musicVideo.html">Music Video</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="documentary.html">Documentary</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="cuerpoWork">
+        
+        <div class="talent-hero">
+            <div class="talent-bio">
+                <h1>Coco Capitan</h1>
+                <p>Coco shoots fashion, but her images feel like accident reports. Everything is slightly off balance. She still develops a lot of her own film and occasionally ruins negatives on purpose to see what happens. Her handwriting usually ends up scrawled across the final prints.</p>
+            </div>
+        </div>
+    
+    <div class="talent-bio" style="margin-top: -30px;">
+        <p>I was looking at her recent Gucci collaboration the other day. She didn't try to make the clothes look pristine. She made them look like they'd actually been worn outside, which is surprisingly rare in luxury fashion.</p>
+    </div>
+    <div class="work-grid work-grid--2">
+        <div class="work-item"><a href="#"><div class="work-thumb"><img src="img/gucci-nyc.jpg" alt="Gucci Collab"></div><div class="work-caption"><span>Gucci Collaboration</span><span>Photography</span></div></a></div>
+        <div class="work-item"><a href="#"><div class="work-thumb"><img src="img/vogue.jpg" alt="Vogue Korea"></div><div class="work-caption"><span>Vogue Korea</span><span>Photography</span></div></a></div>
+    </div>
+    
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <footer class="main-footer" aria-label="pieDePagina">
+        <div class="footer-col">
+            <h3>Barcelona</h3><p>Rambla Catalunya, 123<br>08008 Barcelona, Spain</p><p>+34 934 920 000</p><a href="mailto:bcn@europa.com">bcn@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Madrid</h3><p>Pº de la Castellana 130<br>28046 Madrid, Spain</p><p>+34 91 702 12 00</p><a href="mailto:mad@europa.com">mad@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Berlin</h3><p>Torstraße 138 10119 Berlin,<br>Germany</p><p>+49 30 206330</p><a href="mailto:ber@europa.com">ber@europa.com</a>
+        </div>
+        <div class="footer-col">
+            <h3>Redes Sociales</h3><a href="#instagram">Instagram</a><a href="#x">X</a><a href="#tiktok">TikTok</a><a href="#linkedin">LinkedIn</a>
+        </div>
+        <div class="footer-col">
+            <h3>Navegación</h3><a href="info.html">Info</a><a href="index.html#work">Work</a><a href="index.html#director">Directors</a><a href="index.html#photographers">Photographers</a>
+        </div>
+    </footer>
+
+
+
+<div id="photo-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; align-items:center; justify-content:center; flex-direction:column;">
+    <button id="close-modal" style="position:absolute; top:20px; right:30px; font-size:40px; color:#fff; background:none; border:none; cursor:pointer; z-index:10000;">&times;</button>
+    <div style="position:relative; width:90%; max-width:800px; overflow:hidden;">
+        <div id="modal-carousel-inner" style="display:flex; transition:transform 0.4s ease;"></div>
+        <button id="modalPrevBtn" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); background:none; border:none; color:white; font-size:40px; cursor:pointer;">&#8249;</button>
+        <button id="modalNextBtn" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); background:none; border:none; color:white; font-size:40px; cursor:pointer;">&#8250;</button>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('photo-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const inner = document.getElementById('modal-carousel-inner');
+    const prevBtn = document.getElementById('modalPrevBtn');
+    const nextBtn = document.getElementById('modalNextBtn');
+    
+    // We'll just generate fake gallery images for the 2 items on the page
+
+        const galleryData = [
+        ['Picture 1', 'Picture 2', 'Picture 3'],
+        ['Picture 1', 'Picture 2', 'Picture 3']
+    ];
+    
+    let currentModalSlide = 0;
+    let currentImages = [];
+    
+    function updateModal() {
+        inner.style.transform = `translateX(-${currentModalSlide * 100}%)`;
+    }
+    
+    document.querySelectorAll('.work-item a').forEach((link, index) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Use index 0 or 1 safely
+            currentImages = galleryData[index % galleryData.length];
+            currentModalSlide = 0;
+            
+            inner.innerHTML = '';
+            currentImages.forEach(src => {
+                const imgContainer = document.createElement('div');
+                imgContainer.style.minWidth = '100%';
+                imgContainer.style.height = '80vh';
+                imgContainer.style.display = 'flex';
+                imgContainer.style.alignItems = 'center';
+                imgContainer.style.justifyContent = 'center';
+                imgContainer.style.backgroundColor = '#222';
+                imgContainer.style.color = '#fff';
+                imgContainer.style.fontSize = '3rem';
+                imgContainer.style.fontFamily = 'monospace';
+                imgContainer.style.textTransform = 'uppercase';
+                
+                imgContainer.innerText = src;
+                inner.appendChild(imgContainer);
+            });
+            
+            modal.style.display = 'flex';
+        });
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentModalSlide > 0) {
+            currentModalSlide--;
+            updateModal();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentModalSlide < currentImages.length - 1) {
+            currentModalSlide++;
+            updateModal();
+        }
+    });
+</script>
+</body>
+</html>
