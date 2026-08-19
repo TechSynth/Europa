@@ -204,8 +204,30 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.cuerpo .carousel-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.36);
+  z-index: 0;
+}
+.cuerpo .carousel-item.ethel-cain-slide {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.45)), url("../img/ethelCain.png");
+}
+.cuerpo .carousel-item.judeline-slide {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.45)), url("../img/inriJudeline.jpg");
+}
+.cuerpo .carousel-item.oklou-slide {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.45)), url("../img/oklou.png");
 }
 .cuerpo .carousel-item a {
+  position: relative;
+  z-index: 1;
   text-decoration: none;
   display: block;
   color: inherit;
